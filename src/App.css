@@ -1,0 +1,46 @@
+.App{
+    width: 100w;
+    height: 100vh;
+    display: flex;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.Sidebar{
+    height: 100%;
+    width: 75px;
+    background-color: aqua;
+}
+
+.SidebarList{
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+.SidebarList .row:hover{
+    cursor: pointer;  
+}
+.SidebarList .row{
+    width: 100%;
+    height: 50px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.row #icon{
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.row #title{
+    flex:70%   
+}
