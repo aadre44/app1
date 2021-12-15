@@ -1,33 +1,22 @@
 
 import { render } from 'react-dom';
-import React, {Component} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 import './App.css'
 import Web3 from 'web3'
 import {injected} from "./connectors.js"
 import {useWeb3React, Web3ReactProvider} from '@web3-react/core'
 import  {tokenAddresses, erc20ABI} from './tokens.js'
 import Sidebar from './Components/Sidebar.js'
+import CoinCard from './Components/CoinCard';
+import Display from './Components/Display';
+import axios from 'axios'
+import { convertTypeAcquisitionFromJson } from 'typescript';
+import Coin from './Coin';
+import TokenSearch from './Components/TokenSearch';
+import PieChart from './PieChart';
 
 
 class App extends React.Component{
- 
-    // const { active, account, library, connector, activate, deactivate} = useWeb3React()
-    
-    async UNSAFE_componentWillMount(){
-        await this.loadWeb3()
-        await this.loadBlockchainData()
-    }/**/
-
-   async connectWallet(){
-        const metaMaskInstalled = typeof window.ethereum !== 'undefined'
-     //   this.setState({metaMaskInstalled: metaMaskInstalled})
-        if(metaMaskInstalled){
-            await this.loadWeb3()
-            await this.loadBlockchainData() 
-        }        
-    }
-    
-   //var strongAddress = '0x990f341946A3fdB507aE7e52d17851B87168017c';
     
     async loadBlockchainData(){
         var tokenABI = erc20ABI
@@ -95,44 +84,30 @@ class App extends React.Component{
 
     constructor(props){
         super(props)
+
         this.state = {
             account:'',
             metaMaskInstalled:'',
             tokens:["Start"],
             tokenABI:'',
-        }
+
+        } 
+
     }
 
 
     render(){
 
-        return(
-            
+        return(            
             <div className="App">
                 <Sidebar/>
-                <div>
-                    <h1>Address: {this.state.account} </h1>
-                    <button onClick={this.connectWallet}> Connect Wallet`</button>
-                    <h1>Tokens: {this.state.tokens}</h1>
-                </div>
+                <div className="Spacer"></div>
+                <PieChart/>
+                <TokenSearch/>
+                
             </div>
         )
     }
 
 }
 export default App
-/*
-const provider = await detectEthereumProvider();
-
-if( provider){
-    startApp(provider);
-} else {
-    console.log('Please install Metamask!');
-}
-
-if(!window.ethereum){
-
-    return false;
-}
-
-*/
