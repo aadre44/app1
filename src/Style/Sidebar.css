@@ -1,14 +1,15 @@
 .Sidebar{
     height: 95%;
     width: 90px;
-    background-color: aqua;
+    background-color: #1F2937;
     border-radius: 12px;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-bottom: 5%;
     margin-left: 10px;
     position: fixed;
     overflow-x: hidden;
     overflow-y: hidden;
+    color: white;
 }
 
 .SidebarList{

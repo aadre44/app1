@@ -1,7 +1,11 @@
 .App{
-    width: 100w;
+    width: 100vw;
     height: 100vh;
     display: flex;
+    background-color: #111827;
+    color: white;
+    justify-content: space-between;
+    overflow: hidden;
 }
 
 .App3{
@@ -17,12 +21,12 @@ body{
     flex-direction: row;
 }
 
-.content {
+.Content {
     width: 70vw;
-    height: 150vh;
-    background-color: red;
+    height: 100vh;
     margin-left: 115px;
     overflow-y: scroll;
+
 
 }
 .content :hover{
@@ -31,19 +35,21 @@ body{
 }
 
 .SidePanel{
-    width: 500px;
-    background-color: seagreen;
+    width: 30vw;
+    right: 0px;
+    background-color: #1F2937;
     overflow-x: hidden;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
-
-
-
 
 .Display{
     width: 100%;
     Height: 500px;
-    background-color: lightgray;
+    background-color: #1F2937;
     border-radius: 10px;
 }
 .Spacer{

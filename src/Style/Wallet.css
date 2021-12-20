@@ -1,0 +1,23 @@
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.WalletList{
+    background-color: yellow;
+    width: 90%;
+    height: 70px;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+li{
+
+    padding: 5px;
+
+}

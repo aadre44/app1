@@ -102,8 +102,9 @@ class App extends React.Component{
             account:'',
             metaMaskInstalled:'',
             tokens:["Start"],
-            tokenABI:'',
+            
         }
+
 
     }
 

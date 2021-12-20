@@ -1,6 +1,5 @@
 import React, {Component, useState, useEffect} from "react";
 import CoinCard from "./CoinCard";
-import Coin from "../Coin";
 import axios from "axios";
 
 function TokenSearch(){
