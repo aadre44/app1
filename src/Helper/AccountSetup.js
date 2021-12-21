@@ -20,27 +20,30 @@ function loadWallet(){
 }
 function getMyTokenData(myTokens){
 
-    const allTokenData = []
+    console.log("Getting Full token Data:");
+    var allTokenData = [];
     var count = 0;
-
+    
     console.log("getMyTokenData Function parameter myTokens: "+myTokens)
-
-    for(var token in myTokens){
+    
+    for(let i = 0; i< myTokens.length; i++){
+        let token = myTokens[i];
         if(count >= 50) break;
         count++;
-            console.log("Token to fetch for : "+myTokens[0])
-            let url = 'https://api.coingecko.com/api/v3/coins/ethereum/contract/'+myTokens[0]
-            console.log("url: "+url)
-            //useEffect( () =>{
-                axios.get(url).then(res =>{
-                    allTokenData.push([myTokens[0], res.data]);               
-                }).catch(error=> console.log(error+"Error fetching data for the getMyTokenData funciton"))
-           // }, []);
-  
+        console.log("Token to fetch for : "+token)
+        let url = 'https://api.coingecko.com/api/v3/coins/ethereum/contract/'+token[0]
+        console.log("url: "+url)
+                
+        axios.get(url).then(res =>{
+            allTokenData.push([token[0], res.data]); 
+            console.log("Result of fatch getTokenData: "+allTokenData);
+        }).catch(error=> console.log(error+"Error fetching data for the getMyTokenData funciton"))
+      
     }
-
-    console.log(allTokenData.toString);
+    
+    console.log("Result of getTokenData: "+allTokenData);
     return allTokenData;
+        
     
 }
 
