@@ -17,6 +17,7 @@ import PieChart from './Components/PieChart';
 import Wallet from './Components/Wallet';
 import { setUncaughtExceptionCaptureCallback } from 'process';
 import getMyTokenData from './Helper/AccountSetup';
+import * as FiIcons from "react-icons/fi";
 
 
 class App extends React.Component{
@@ -127,14 +128,18 @@ class App extends React.Component{
             <div className="App">
                 <Sidebar/>
                 <div className= 'Content'>
+                    <div className= 'ContentHeader'>
+                        <FiIcons.FiHome/>
+                        <p>Dashboard</p>
+                    </div>
                     <div>
                         <h1>Total Net Worth</h1>
                         <p>${this.state.totalBal.toString()}</p>
                     </div>
                     <div>
-                        <div>
-                            <p>Wallet</p>
-                            <p>NFTs</p>
+                        <div className='TabHeader'>
+                            <button>Wallet</button>
+                            <button>NFTs</button>
                         </div>
                         {console.log("my token list: "+this.state.myTokenList)}
                         {this.state.myTokenList.map((row)=>{

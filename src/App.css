@@ -33,7 +33,13 @@ body{
 
     
 }
+.ContentHeader{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
 
+}
 .SidePanel{
     width: 30vw;
     right: 0px;
@@ -54,4 +60,9 @@ body{
 }
 .Spacer{
     margin-left: 120px;
+}
+
+.TabHeader{
+
+    display: flex;
 }

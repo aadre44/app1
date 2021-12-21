@@ -1,11 +1,12 @@
 .Sidebar{
     height: 95%;
-    width: 90px;
+    width: 70px;
     background-color: #1F2937;
     border-radius: 12px;
     margin-top: 1%;
     margin-bottom: 5%;
     margin-left: 10px;
+    margin-right: 10px;
     position: fixed;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -37,7 +38,12 @@
 }
 
 .SidebarList li{
-    padding: 5px;
+    padding: .05em;
+    margin-top: 2em;
+}
+.SidebarList .Selected{
+    border-color: white;
+    border-right: 1px solid #ddd;
 }
 
 .row #icon{
@@ -49,3 +55,16 @@
 .row #title{
     flex:70%   
 }
+
+button{
+
+    color: white;
+    border: 0px;
+    background-color: transparent;
+
+}
+button:hover{
+    color: gold;
+    border-color: transparent;
+}
+

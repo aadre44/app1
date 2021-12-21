@@ -1,25 +1,22 @@
 import React from 'react'
+import * as FiIcons from "react-icons/fi";
 
 export const SidebarData = [
     {
         title: "Home",
-        icon: "Icon",
+        icon: <FiIcons.FiHome/>,
         link: "/home"
     },
     {
         title: "Wallet",
-        icon: "Icon",
+        icon:  <FiIcons.FiDollarSign/>,
         link: "/home"
     },
     {
         title: "Portfolio",
-        icon: "Icon",
+        icon: <FiIcons.FiActivity/>,
         link: "/home"
     },
-    {
-        title: "Search",
-        icon: "Icon",
-        link: "/home"
-    },
+
 
 ]
