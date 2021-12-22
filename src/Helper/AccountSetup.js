@@ -1,5 +1,6 @@
 import  React, {Component,useState, useEffect} from 'react';
 import axios from 'axios';
+import { Console } from 'console';
 
 
 //Use this to obtain all the coins' id in order to make API calls
@@ -18,6 +19,7 @@ function loadWallet(){
 
 
 }
+
 function getMyTokenData(myTokens){
 
     console.log("Getting Full token Data:");
