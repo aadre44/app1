@@ -37,8 +37,8 @@ function Sidebar(){
 
     return(
         <div className='Sidebar'>
-            <div>
-                <FiIcons.FiAperture/>
+            <div className="SiteIcon">
+                <FiIcons.FiAperture size={40}/>
             </div>
         
             <div className="SidebarList">

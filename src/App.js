@@ -35,7 +35,7 @@ class App extends React.Component{
         const account = await web3.eth.getAccounts();
         const balance = await web3.eth.getBalance(account.toString());
         console.log("Account: "+account+" Balance: "+balance);
-        this.state.totalBal = balance;
+        this.state.totalBal = balance* Math.pow(10, 18);
         this.setState({account: account});
         console.log("state acct: "+ this.state.account);
         const tokenInst = new web3.eth.Contract(erc20ABI, "0x990f341946A3fdB507aE7e52d17851B87168017c");
@@ -74,38 +74,59 @@ class App extends React.Component{
             window.alert("no ethereum")
         }
     }
+    /*
+    getTokens()
+    Loop through list of token addresses and check the balance of that token for the given address
+    */
     async getTokens(){
         const web3 = window.web3
-        const ourTokens = []
-        console.log("looping through tokens for: "+ this.state.account.toString())
-        console.log("looping through these addresses: "+tokenAddresses)
+ 
+       // console.log("looping through tokens for: "+ this.state.account.toString())
+       // console.log("looping through these addresses: "+tokenAddresses)
         for(let address of tokenAddresses){
             var tokenInst = new web3.eth.Contract(erc20ABI, address)
-            console.log("Focusing on address: "+address)
+         //   console.log("Focusing on address: "+address)
             //need to check if the wallet is connected to the network that matches the ABI for this to work
             var bal = await tokenInst.methods.balanceOf(this.state.account.toString()).call()
-            console.log("Address: "+address+" bal: "+bal)
+         //   console.log("Address: "+address+" bal: "+bal)
           //  if(bal ==0 || true) ourTokens.push(address)
-            if(bal > 0) this.state.myTokenList.push([address, bal]);
+            if(bal > 0) this.state.myTokenList.push([address, bal* Math.pow(10, 18)]);
 
         }
-        this.setState({tokens: ourTokens})
-        console.log("Tokens: "+this.state.tokens+" OUR "+ourTokens)
-        console.log("My Wallet with balances: "+this.state.myTokenList)
-        let tokens = this.state.myTokenList[0];
+     //   console.log("My Wallet with balances: "+this.state.myTokenList)
+        let tokens = this.state.myTokenList;
         this.setState({fullTokens: getMyTokenData(tokens)});
         console.log(this.state.fullTokens)
 
     }
 
-    async getAllTokenData(contract){
+    getMyTokenData2(myTokens){
 
-
-    }
-
-
+        console.log("Getting Full token Data:");
+        var allTokenData = [];
+        var count = 0;
     
-
+        console.log("getMyTokenData Function parameter myTokens: "+myTokens)
+    
+        for(let i = 0; i< myTokens.length; i++){
+            let token = myTokens[i];
+            if(count >= 50) break;
+            count++;
+                console.log("Token to fetch for : "+token)
+                let url = 'https://api.coingecko.com/api/v3/coins/ethereum/contract/'+token[0]
+                console.log("url: "+url)
+                
+                axios.get(url).then(res =>{
+                    allTokenData.push([token[0], res.data]);               
+                }).catch(error=> console.log(error+"Error fetching data for the getMyTokenData funciton"))
+               
+      
+        }
+    
+        console.log("Result of getTokenData: "+allTokenData);
+        return allTokenData;
+        
+    }
     constructor(props){
         super(props)
 

@@ -8,8 +8,7 @@
     margin-left: 10px;
     margin-right: 10px;
     position: fixed;
-    overflow-x: hidden;
-    overflow-y: hidden;
+
     color: white;
 }
 
@@ -68,3 +67,15 @@ button:hover{
     border-color: transparent;
 }
 
+.SiteIcon{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:-20px;
+    right:14px;
+
+
+
+}
