@@ -20,14 +20,15 @@ function loadWallet(){
 
 }
 
-function getMyTokenData(myTokens){
+async function getMyTokenData(myTokens){
 
-    console.log("Getting Full token Data:");
+    console.log("Starting getMyTokenData Getting Full token Data:");
     var allTokenData = [];
     var count = 0;
     
     console.log("getMyTokenData Function parameter myTokens: "+myTokens)
-    
+    let pendingRequests = []; 
+
     for(let i = 0; i< myTokens.length; i++){
         let token = myTokens[i];
         if(count >= 50) break;
@@ -35,13 +36,45 @@ function getMyTokenData(myTokens){
         console.log("Token to fetch for : "+token)
         let url = 'https://api.coingecko.com/api/v3/coins/ethereum/contract/'+token[0]
         console.log("url: "+url)
-                
-        axios.get(url).then(res =>{
+
+        let result = axios.get(url).then(res =>{
             allTokenData.push([token[0], res.data]); 
             console.log("Result of fatch getTokenData: "+allTokenData);
+
         }).catch(error=> console.log(error+"Error fetching data for the getMyTokenData funciton"))
-      
+        pendingRequests.push(result);
     }
+    await Promise.allSettled(pendingRequests);
+    
+    console.log("Result of getTokenData: "+allTokenData);
+
+    return allTokenData;
+        
+    
+}
+function getMyTokenData2(myTokens){
+
+    console.log("Getting Full token Data:");
+    var allTokenData = [];
+    var count = 0;
+    
+    console.log("getMyTokenData Function parameter myTokens: "+myTokens)
+    useEffect( () =>{
+        for(let i = 0; i< myTokens.length; i++){
+            let token = myTokens[i];
+            if(count >= 50) break;
+            count++;
+            console.log("Token to fetch for : "+token)
+            let url = 'https://api.coingecko.com/api/v3/coins/ethereum/contract/'+token[0]
+            console.log("url: "+url)
+                    
+            axios.get(url).then(res =>{
+                allTokenData.push([token[0], res.data]); 
+                console.log("Result of fatch getTokenData: "+allTokenData);
+            }).catch(error=> console.log(error+"Error fetching data for the getMyTokenData funciton"))
+        
+        } 
+    }, []);
     
     console.log("Result of getTokenData: "+allTokenData);
     return allTokenData;

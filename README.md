@@ -27,3 +27,11 @@ Features:
 * Show your wallets coin amount history on chart
 * Show your wallets coin value history on chart 
 * Show list of transactions 
+
+
+## Project Structure
+Components
+    SidePanel
+    
+Pages
+Domains
