@@ -1,5 +1,6 @@
 Implement List: 
 
+* Send data to piechart and wallet components
 * display chart of coin
 * Create token that displays users token amount, and value in fiat or coin of choice
 * Creat display for portfolio distribution 
@@ -27,3 +28,11 @@ Features:
 * Show your wallets coin amount history on chart
 * Show your wallets coin value history on chart 
 * Show list of transactions 
+
+
+## Project Structure
+Components
+    SidePanel
+
+Pages
+Domains
