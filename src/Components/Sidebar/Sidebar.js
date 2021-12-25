@@ -1,6 +1,6 @@
 import React, {Component, useState} from 'react'
 import {SidebarData} from "./SidebarData"
-import './../Style/Sidebar.css'
+import './Sidebar.css'
 import * as FiIcons from "react-icons/fi";
 import { Link } from 'react-router-dom';
 
