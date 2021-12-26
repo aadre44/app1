@@ -1,6 +1,7 @@
 import React from "react";
+import "./Display.css"
 
-function Display(){
+function Display(data){
     return(
 
         <div className='Display'>

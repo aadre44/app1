@@ -1,73 +1,66 @@
-.App{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background-color: #111827;
-    color: white;
-    justify-content: space-between;
-    overflow: hidden;
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #111827;
+  color: white;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.Dashboard{
+    margin: 15px;
+}
+.App3 {
+  width: 100w;
+  height: 100vh;
+  padding-left: 125px;
 }
 
-.App3{
-    width: 100w;
-    height: 100vh;
-    padding-left: 125px;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
 }
 
 .Content {
-    width: 70vw;
-    height: 100vh;
-    margin-left: 115px;
-    overflow-y: scroll;
-
-
-}
-.content :hover{
-
-    
-}
-.ContentHeader{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    
-
-}
-.SidePanel{
-    width: 30vw;
-    right: 0px;
-    background-color: #1F2937;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  width: 70vw;
+  height: 100vh;
+  margin-left: 115px;
+  overflow-y: scroll;
 }
 
-.Display{
-    width: 100%;
-    Height: 500px;
-    background-color: #1F2937;
-    border-radius: 10px;
+.ContentHeader {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
-.Spacer{
-    margin-left: 120px;
+.SidePanel {
+  width: 30vw;
+  right: 0px;
+  background-color: #1f2937;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.DashTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
 }
 
-.TabHeader{
-
-    display: flex;
+.Spacer {
+  margin-left: 120px;
 }
 
-p{
-    margin: 0;
-    padding-left: 1rem;
+.TabHeader {
+  display: flex;
+}
+
+p {
+  margin: 0;
+  padding-left: 1rem;
 }

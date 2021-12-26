@@ -1,72 +1,43 @@
 import React from "react";
-import "./../Style/Wallet.css"
+import "./Wallet.css";
 
-const coins = [
-    { symbol: "ADA", amount: 200, color: "#0033ad", inUSD: 1.48 },
-    { symbol: "SOL", amount: 5, color: "#00ffbd", inUSD: 37.6 },
-    { symbol: "BTC", amount: 0.005, color: "#F7931A", inUSD: 37363 },
-  ];
-
-function Wallet({type = 1}){
-
-
-    if(type==1){
-
-        return (
-
-            <div className="Container">
-    
-                <ul className="WalletList">
-    
-                {coins.map((coin)=>{
-    
-                    return(
-    
-                        <li style= {{color: coin.color}}>
-
-                            {`${coin.symbol}  `}
-                            {`${coin.amount} `}
-                            {coin.inUSD}
-    
-                            
-                        </li>
-                    )
-    
-                })}
-    
-                </ul>
-    
-            </div>
-        )
-    }else {
-
-        return (
-
-            <div>
-    
-                <ul>
-    
-                {coins.map((coin)=>{
-    
-                    return(
-    
-                        <li >
-                            <div>
-                                {`${coin.symbol}  `}
-                                {coin.amount}
-    
-                            </div>
-                        </li>
-                    )
-    
-                })}
-    
-                </ul>
-    
-            </div>
-        )
-    }
-    
+function Wallet({ coins, type = 1 }) {
+  if (type == 1) {
+    return (
+      <div className="Container">
+        <ul className="WalletList">
+          {coins.map((coin) => {
+            const amountValue =
+              Math.round(((coin[1].market_data.current_price.usd * coins[0].balance)+Number.EPSILON)*100)/100;
+            return (
+              <li style={{ color: coin[0].color }}>
+                {`${coin[1].symbol}  `}
+                {`${coin[0].balance} `}
+                {amountValue}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <ul>
+          {coins.map((coin) => {
+            return (
+              <li>
+                <div>
+                  {`${coin.symbol}  `}
+                  {coin.amount}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
 
-export default Wallet
+export default Wallet;

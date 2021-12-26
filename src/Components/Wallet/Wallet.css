@@ -10,7 +10,6 @@
     width: 90%;
     height: 70px;
     display: flex;
-    overflow: hidden;
     flex-wrap: wrap;
     justify-content: space-between;
     

@@ -4,19 +4,17 @@ import "./App.css";
 import Web3 from "web3";
 import { injected } from "./connectors.js";
 import { useWeb3React, Web3ReactProvider } from "@web3-react/core";
-import { tokenAddresses, erc20ABI } from "./Helper/erc20Tokens.js";
+import { tokenAddresses, erc20ABI } from "./Helper/TokenData/erc20Tokens.js";
 import Sidebar from "./Components/Sidebar/Sidebar.js";
 import CoinCard from "./Components/CoinCard/CoinCard";
 import Display from "./Components/Display/Display";
 import axios from "axios";
 import { convertTypeAcquisitionFromJson, setConstantValue } from "typescript";
-import Coin from "./Coin";
-import TokenSearch from "./Components/TokenSearch";
 import PieChart from "./Components/Piechart/PieChart";
 import Wallet from "./Components/Wallet/Wallet";
-import { setUncaughtExceptionCaptureCallback } from "process";
 import getMyTokenData from "./Helper/AccountSetup";
 import * as FiIcons from "react-icons/fi";
+import TokenSearch from "./Components/TokenSearch/TokenSearch";
 
 class App extends React.Component {
   async UNSAFE_componentWillMount() {
@@ -38,11 +36,6 @@ class App extends React.Component {
       erc20ABI,
       "0x990f341946A3fdB507aE7e52d17851B87168017c"
     );
-    var strongBal = await tokenInst.methods
-      .balanceOf(account.toString())
-      .call();
-    strongBal /= 10;
-    console.log("strong bal: " + strongBal);
     this.getTokens();
     this.render();
   }
@@ -78,7 +71,8 @@ class App extends React.Component {
         .balanceOf(this.state.account.toString())
         .call();
       if (bal > 0)
-        this.state.myTokenList.push([address, bal * Math.pow(10, 18)]);
+       // this.state.myTokenList.push([address, bal * Math.pow(10, 18)]);
+        this.state.myTokenList.push({address: address, balance: bal * Math.pow(10, 18), color: `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`});
     }
     let tokens = this.state.myTokenList;
     let data = await getMyTokenData(tokens);
@@ -98,6 +92,7 @@ class App extends React.Component {
       totalBal: "",
       myTokenList: [],
       fullTokens: [],
+      fiat: "usd"
     };
   }
 
@@ -110,9 +105,14 @@ class App extends React.Component {
             <FiIcons.FiHome />
             <p>Dashboard</p>
           </div>
-          <div>
-            <h1>Total Net Worth</h1>
-            <p>${this.state.totalBal.toString()}</p>
+          <div className="Dashboard">
+            <div className="DashTitle">
+                <h4>Total Net Worth</h4>
+                <p> {this.state.account}</p>
+            </div>
+            
+            <p>${Math.round(((this.state.totalBal+Number.EPSILON)*100))/100}</p>
+            <Display/>
           </div>
           <div>
             <div className="TabHeader">
@@ -120,23 +120,30 @@ class App extends React.Component {
               <button>NFTs</button>
             </div>
             {this.state.fullTokens.map((coin) => {
-              console.log("THis is the full coin: " + coin);
-              console.log("Current Full Token list" + this.state.fullTokens);
               return (
                 <CoinCard
                   key={coin[1].id}
                   name={coin[1].name}
-                  price={coin[1].price}
+                  price={coin[1].market_data.current_price.usd}
                   image={coin[1].image.thumb}
-                />
+                  symbol={coin[1].symbol}
+                  change={coin[1].market_data.ath_change_percentage.usd}
+                  amount={coin[0].balance} 
+                />   
               );
             })}
-            {console.log("my full 2 token list: " + this.state.fullTokens)}
           </div>
+          
         </div>
         <div className="SidePanel">
-          <PieChart />
-          <Wallet />
+          <PieChart 
+            key = {1}
+            coinList = {this.state.fullTokens}
+          />
+          <Wallet 
+            key= {1}
+            coins = {this.state.fullTokens}
+          />
         </div>
       </div>
     );
