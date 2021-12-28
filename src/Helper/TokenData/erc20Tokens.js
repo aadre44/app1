@@ -26,6 +26,7 @@ const tokenAddresses = [
     '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',// 'usdc'], //USDC
     '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f', //'sOhm'] //staked OHM
     '0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0', //wrapped matic
+    
 
 ]
 module.exports = {tokenAddresses, erc20ABI};

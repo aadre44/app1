@@ -5,6 +5,10 @@
     border-radius: 10px;
     display: flex;
     color: white;
+    justify-content: space-evenly;
+    margin:10px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .CoinIcon{
@@ -13,20 +17,28 @@
     
 }
 
-.Price{
+.PriceTag{
 
     padding: 10px;
     display: flex;
+    flex-direction: column;
     height: 100%;
     justify-content: center;
     align-content: center;
 
 
 }
+.symbol{
+    color: gray;
+}
+.athChange{
+    color: gray;
+}
 
 .NameTag{
 
     display: flex;
+    flex-direction: column;
     height: 100%;
     padding: 10px;
     justify-content: center;
@@ -37,5 +49,16 @@
 img {
     border-radius: 50%;
     margin-top: 50%;
+}
+
+.BalanceTag{
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+
 }
 
