@@ -1,5 +1,5 @@
 import { render } from "react-dom";
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import "./App.css";
 import Web3 from "web3";
 import { injected } from "./connectors.js";
@@ -15,6 +15,8 @@ import Wallet from "./Components/Wallet/Wallet";
 import getMyTokenData from "./Helper/AccountSetup";
 import * as FiIcons from "react-icons/fi";
 import TokenSearch from "./Components/TokenSearch/TokenSearch";
+import { Chart } from "react-chartjs-2";
+import ChartLine from "./Components/ChartLine/ChartLine"
 
 class App extends React.Component {
   async UNSAFE_componentWillMount() {
@@ -83,7 +85,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.myRef = React.createRef();
     this.state = {
       account: "",
       metaMaskInstalled: "",
@@ -94,7 +96,11 @@ class App extends React.Component {
       fullTokens: [],
       fiat: "usd"
     };
+
   }
+
+  
+
 
   render() {
     return (
@@ -112,8 +118,9 @@ class App extends React.Component {
             </div>
             
             <p>${Math.round(((this.state.totalBal+Number.EPSILON)*100))/100}</p>
-            <Display/>
-          </div>
+            <ChartLine/>
+
+          
           <div>
             <div className="TabHeader">
               <button>Wallet</button>
@@ -133,7 +140,7 @@ class App extends React.Component {
               );
             })}
           </div>
-          
+          </div>
         </div>
         <div className="SidePanel">
           <PieChart 
