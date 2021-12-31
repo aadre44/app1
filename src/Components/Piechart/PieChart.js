@@ -3,20 +3,22 @@ import { Pie } from "@visx/shape";
 import { Group } from "@visx/group";
 import { Text } from "@visx/text";
 
-function PieChart({ coins, coinList }) {
+function PieChart({ coinList }) {
+  /*
   coins = [
     { symbol: "ADA", amount: 200, color: "#0033ad", inUSD: 1.48 },
     { symbol: "SOL", amount: 5, color: "#00ffbd", inUSD: 37.6 },
     { symbol: "BTC", amount: 0.005, color: "#F7931A", inUSD: 37363 },
     { symbol: "Strong", amount: 56.005, color: "purple", inUSD: 63 },
-  ];
+  ];*/
+  let coins = [];
 
-    coinList.map((coin) => {
+  coinList.map((coin) => {
       coins.push({
         symbol: coin[1].symbol,
         amount: coin[0].balance,
         color: coin[0].color,
-        inUSD: coin[1].market_data.current_price.usd * coins[0][1],
+        inUSD: (coin[1].market_data.current_price.usd * coin[0].balance).toFixed(2),
       });
     });
  

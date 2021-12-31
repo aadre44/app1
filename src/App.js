@@ -12,16 +12,18 @@ import axios from "axios";
 import { convertTypeAcquisitionFromJson, setConstantValue } from "typescript";
 import PieChart from "./Components/Piechart/PieChart";
 import Wallet from "./Components/Wallet/Wallet";
-import getMyTokenData from "./Helper/AccountSetup";
+import {getMyTokenData, getHistData} from "./Helper/AccountSetup";
 import * as FiIcons from "react-icons/fi";
 import TokenSearch from "./Components/TokenSearch/TokenSearch";
 import { Chart } from "react-chartjs-2";
 import ChartLine from "./Components/ChartLine/ChartLine"
+import Search from "./Pages/Search/Search";
 
 class App extends React.Component {
   async UNSAFE_componentWillMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
+    await this.getChartHistory();
   }
   async loadBlockchainData() {
     var tokenABI = erc20ABI;
@@ -31,13 +33,21 @@ class App extends React.Component {
     const account = await web3.eth.getAccounts();
     const balance = await web3.eth.getBalance(account.toString());
     console.log("Account: " + account + " Balance: " + balance);
-    this.state.totalBal = balance * Math.pow(10, 18);
+    this.state.totalBal = (balance == 0 ?(balance * Math.pow(10, 18)) :(balance * Math.pow(10, 18)).toFixed(2));
     this.setState({ account: account });
     console.log("state acct: " + this.state.account);
     const tokenInst = new web3.eth.Contract(
       erc20ABI,
       "0x990f341946A3fdB507aE7e52d17851B87168017c"
     );
+    const currentdate = new Date();
+    var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    this.state.totalBalHist.push({balance: this.state.totalBal, date: datetime})
     this.getTokens();
     this.render();
   }
@@ -72,9 +82,10 @@ class App extends React.Component {
       var bal = await tokenInst.methods
         .balanceOf(this.state.account.toString())
         .call();
-      if (bal > 0)
+      if (bal > 0){
        // this.state.myTokenList.push([address, bal * Math.pow(10, 18)]);
         this.state.myTokenList.push({address: address, balance: bal * Math.pow(10, 18), color: `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`});
+      } 
     }
     let tokens = this.state.myTokenList;
     let data = await getMyTokenData(tokens);
@@ -89,18 +100,22 @@ class App extends React.Component {
     this.state = {
       account: "",
       metaMaskInstalled: "",
-      tokens: ["Start"],
+      tokens: [],
       tokenABI: erc20ABI,
       totalBal: "",
       myTokenList: [],
       fullTokens: [],
-      fiat: "usd"
+      fiat: "usd",
+      totalBalHist:[]
     };
 
   }
 
-  
-
+  async getChartHistory(){
+    let hist = await getHistData("bitcoin", 10);
+    this.setState({totalBalHist: hist});
+    this.render()
+  }
 
   render() {
     return (
@@ -114,11 +129,13 @@ class App extends React.Component {
           <div className="Dashboard">
             <div className="DashTitle">
                 <h4>Total Net Worth</h4>
-                <p> {this.state.account}</p>
+                <p> Account: {this.state.account}</p>
             </div>
             
             <p>${Math.round(((this.state.totalBal+Number.EPSILON)*100))/100}</p>
-            <ChartLine/>
+            <ChartLine 
+              historicalData ={this.state.totalBalHist}
+            />
 
           
           <div>
@@ -132,7 +149,7 @@ class App extends React.Component {
                   key={coin[1].id}
                   name={coin[1].name}
                   price={coin[1].market_data.current_price.usd}
-                  image={coin[1].image.thumb}
+                  image={coin[1].image.small}
                   symbol={coin[1].symbol}
                   change={coin[1].market_data.ath_change_percentage.usd}
                   amount={coin[0].balance} 
@@ -141,6 +158,7 @@ class App extends React.Component {
             })}
           </div>
           </div>
+          <Search/>
         </div>
         <div className="SidePanel">
           <PieChart 

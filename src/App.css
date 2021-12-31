@@ -47,9 +47,13 @@ body {
 }
 .DashTitle {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 3px;
+}
+.DashTitle p{
+  color: gray;
 }
 
 .Spacer {

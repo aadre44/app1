@@ -47,4 +47,48 @@ async function getMyTokenData(myTokens) {
   return allTokenData;
 }
 
-export default getMyTokenData;
+async function getHistData(coinName, days){
+
+  console.log("GETING HISTORICAL DATA FOR "+coinName);
+  //https://api.coingecko.com/api/v3/coins/bitcoin/history?date=28-12-2021
+  let thirtyOne = [1, 3, 5, 7, 8, 10, 12];
+  let currentDate = new Date();
+  let month = currentDate.getMonth()+1;
+  let day = currentDate.getDay()+1;
+  let year = currentDate.getFullYear();
+  let prices = [];
+  let hist = [];
+ 
+  
+  for(let i = 0; i < days; i++){
+    let url = "https://api.coingecko.com/api/v3/coins/"+coinName+"/history?date="+day+"-"+month+"-"+year;
+    
+
+    day--;
+    if(day<=0){
+      month--;
+      if(month <= 0)month = 12;
+      if(thirtyOne.includes(month)) day = 31;
+      else if(month == 2) day = 28;
+      else day = 30;
+    }
+
+    let result = axios
+    .get(url)
+    .then((res)=>{
+      prices.push(res.data.market_data.current_price.usd);
+      console.log(res.data);
+    })
+    .catch((error) =>
+      console.log(
+      error + "Error fetching data for the getHistoricalData funciton"
+    ));
+    hist.push(result);
+
+  }
+  await Promise.allSettled(hist);
+
+  return prices;
+}
+
+export {getMyTokenData, getHistData};

@@ -1,9 +1,6 @@
 Implement List: 
 
-* Send data to piechart and wallet components
-* display chart of coin
-* Create token that displays users token amount, and value in fiat or coin of choice
-* Creat display for portfolio distribution 
+* figure out why the line chart does not populate
 * Side bar link to route to other pages 
 
 
