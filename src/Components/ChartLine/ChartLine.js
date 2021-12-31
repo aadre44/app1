@@ -22,28 +22,32 @@ ChartJS.register(
   Legend
 );
 
-function ChartLine() {
+function ChartLine(historicalData) {
+
+  
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "top",
       },
       title: {
-        display: true,
-        text: "Chart.js CLine Chart",
+        display: false,
+        text: "Chart.js Portfolio CLhine Cart",
       },
     },
   };
 
-  const labels = ["Jan", "February", "March", "April", "May", "June", "July"];
+  const labels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", 
+  "13"];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Dataset 1",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        data: historicalData,
         borderColor: "rgb(28, 253, 28)",
         backgroundColor: "rgba(28, 253, 28, 0.5)",
       },

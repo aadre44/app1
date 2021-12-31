@@ -1,0 +1,71 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #111827;
+    color: white;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .Dashboard{
+      margin: 15px;
+  }
+  .App3 {
+    width: 100w;
+    height: 100vh;
+    padding-left: 125px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .Content {
+    width: 70vw;
+    height: 100vh;
+    margin-left: 115px;
+    overflow-y: scroll;
+  }
+  
+  .ContentHeader {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .SidePanel {
+    width: 30vw;
+    right: 0px;
+    background-color: #1f2937;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .DashTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+  }
+  .DashTitle p{
+    color: gray;
+  }
+  
+  .Spacer {
+    margin-left: 120px;
+  }
+  
+  .TabHeader {
+    display: flex;
+  }
+  
+  p {
+    margin: 0;
+    padding-left: 1rem;
+  }
+  
