@@ -1,4 +1,6 @@
-const fantomABI = [
+//https://ftmscan.com/apis
+
+const ABI = [
   {
     constant: true,
     inputs: [
@@ -22,4 +24,5 @@ const fantomABI = [
 const tokenAddresses = [
   "0x4e15361fd6b4bb609fa63c81a2be19d873717870", // ftm
 ];
-module.exports = { tokenAddresses, fantomABI };
+module.exports = { tokenAddresses, ABI };
+

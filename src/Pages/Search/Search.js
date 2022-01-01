@@ -3,6 +3,7 @@ import "./Search.css";
 import ChartLine from "../../Components/ChartLine/ChartLine";
 import TokenSearch from "../../Components/TokenSearch/TokenSearch";
 import {getMyTokenData, getHistData} from "../../Helper/AccountSetup";
+import * as FiIcons from "react-icons/fi";
 
 function lookUpHistoricalData(days){
 
@@ -20,18 +21,20 @@ function Search({account, accountBalance}){
     
 
     return(
-        <div>
+        <div className="SearchContainer">
+            <div className="ContentHeader">
+                <FiIcons.FiActivity/>
+                <p>Search</p>
+            </div>
             <div className = "SearchHeader">
+        
+                <h4>Historical Price Data</h4>
                 <form action="">
                     <input type="text" placeholder="Search" />
                 </form>
+
             </div>
-            <div className="Title">
-                <h4>Total Net Worth</h4>
-                <p> Account:{account}</p>
-            </div>
-            
-            <p>${accountBalance}</p>
+           
             <ChartLine 
               historicalData ={coinHistory}
             />

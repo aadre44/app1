@@ -1,5 +1,6 @@
+//https://docs.etherscan.io/
 
-const erc20ABI = [{
+const ABI = [{
     "constant": true,
     "inputs": [
       {
@@ -29,5 +30,5 @@ const tokenAddresses = [
     
 
 ]
-module.exports = {tokenAddresses, erc20ABI};
+module.exports = {tokenAddresses, ABI};
 

@@ -24,7 +24,7 @@ function TokenSearch(){
 
     return(
 
-        <div className="App3">
+        <div className="TokenSearchContainer">
                 <div className='coin-search'>
                     <h1 className='coin-text'>Search a currency</h1>
                     <form>

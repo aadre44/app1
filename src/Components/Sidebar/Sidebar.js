@@ -44,13 +44,14 @@ function Sidebar(){
             <div className="SidebarList">
                 <ul>
                     <li className ={homeActive ? 'Selected': ''} id="home"> 
-                        <button onClick={() => toggleIcon('home')}><FiIcons.FiHome/></button>
+                        <Link to="/" onClick={() => toggleIcon('home')}><FiIcons.FiHome/></Link>
                     </li>
                     <li className ={portfolioActive ? 'Selected': ''} id="Portfolio">
-                        <button onClick={() => toggleIcon('portfolio')}><FiIcons.FiActivity/></button>
+                        <Link to= "/Search"onClick={() => toggleIcon('portfolio')}><FiIcons.FiActivity/></Link>
                     </li>
                     <li className ={walletActive ? 'Selected': ''} id="Wallet">
-                        <button onClick={() => toggleIcon('wallet')}><FiIcons.FiDollarSign/></button>
+                        <Link to="/Wallet" onClick={() => toggleIcon('wallet')}><FiIcons.FiDollarSign/></Link>
+                        
                     </li>
                 </ul>
             </div>

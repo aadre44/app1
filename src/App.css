@@ -7,14 +7,6 @@
   justify-content: space-between;
   overflow: hidden;
 }
-.Dashboard{
-    margin: 15px;
-}
-.App3 {
-  width: 100w;
-  height: 100vh;
-  padding-left: 125px;
-}
 
 body {
   margin: 0;
@@ -23,18 +15,6 @@ body {
   flex-direction: row;
 }
 
-.Content {
-  width: 70vw;
-  height: 100vh;
-  margin-left: 115px;
-  overflow-y: scroll;
-}
-
-.ContentHeader {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
 .SidePanel {
   width: 30vw;
   right: 0px;
@@ -45,26 +25,14 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.DashTitle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 3px;
-}
-.DashTitle p{
-  color: gray;
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  color: white;
 }
 
-.Spacer {
-  margin-left: 120px;
-}
-
-.TabHeader {
-  display: flex;
-}
-
-p {
-  margin: 0;
-  padding-left: 1rem;
+ Track 
+::-webkit-scrollbar-track {
+  background: red; 
 }

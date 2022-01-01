@@ -55,14 +55,14 @@
     flex:70%   
 }
 
-button{
+a{
 
     color: white;
     border: 0px;
     background-color: transparent;
 
 }
-button:hover{
+a:hover{
     color: gold;
     border-color: transparent;
 }

@@ -1,0 +1,13 @@
+.SearchContainer{
+    margin: 15px;
+    width: 100%;
+    padding-left: 80px;
+    overflow: scroll;
+}
+
+.SearchHeader{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
