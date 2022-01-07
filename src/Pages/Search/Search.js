@@ -37,6 +37,7 @@ function Search({account, accountBalance}){
            
             <ChartLine 
               historicalData ={coinHistory}
+              type = "big"
             />
             <TokenSearch/>
         </div>

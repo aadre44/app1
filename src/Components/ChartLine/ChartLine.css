@@ -1,4 +1,9 @@
-.ChartContainer{
+.ChartContainerMini{
+    height: 80px;
+    width: 100%;
+}
+.ChartContainerBig{
 
+    height: 300px;
     width: 100%;
 }

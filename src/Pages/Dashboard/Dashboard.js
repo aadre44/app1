@@ -31,7 +31,7 @@ function Dashboard({account, tokens, totalBal, fullTokens, totalBalHist}){
 
       return(
         <div className="DashboardContainer">
-            <div className="Content">
+            <div className="DashboardContent">
                 <div className="ContentHeader">
                     <FiIcons.FiHome />
                     <p>Dashboard</p>
@@ -44,7 +44,8 @@ function Dashboard({account, tokens, totalBal, fullTokens, totalBalHist}){
                     
                     <p>${Math.round(((totalBal+Number.EPSILON)*100))/100}</p>
                     <ChartLine 
-                    historicalData ={totalBalHist}
+                        historicalData ={totalBalHist}
+                        type="big"
                     />
                 <div>
                     <div className="TabHeader">
@@ -54,6 +55,7 @@ function Dashboard({account, tokens, totalBal, fullTokens, totalBalHist}){
                     {fullTokens.map((coin) => {
                     return (
                         <CoinCard
+                        type = "long"
                         key={coin[1].id}
                         name={coin[1].name}
                         price={coin[1].market_data.current_price.usd}

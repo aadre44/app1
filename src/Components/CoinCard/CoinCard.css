@@ -1,64 +1,90 @@
-.CoinCard{
-    width: 100%;
-    height: 100px;
-    background-color: #1F2937;
-    border-radius: 10px;
-    display: flex;
-    color: white;
-    justify-content: space-evenly;
-    margin:10px;
-    margin-left: 0px;
-    margin-right: 0px;
+/*Mini Card*/
+.CoinCardMini {
+  width: 300px;
+  height: 100px;
+  background-color: #1f2937;
+  border-radius: 20px;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  margin: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-.CoinIcon{
-    
-    height: 100%;
-    
+/* Long Card*/
+.CoinCardLong {
+  width: 100%;
+  height: 100px;
+  background-color: #1f2937;
+  border-radius: 10px;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
-.PriceTag{
-
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    align-content: center;
-
-
+/* default*/
+.CoinCard {
+  width: 100%;
+  height: 100px;
+  background-color: #1f2937;
+  border-radius: 10px;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  margin: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-.symbol{
-    color: gray;
+.CoinIcon {
+  padding: 5px;
+  height: 100%;
+  margin-left: 20px;
 }
-.athChange{
-    color: gray;
+
+.PriceTag {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+}
+.symbol {
+  color: gray;
+}
+.athChange {
+  color: gray;
 }
 
-.NameTag{
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 10px;
-    justify-content: center;
-    align-content: center;
-
+.NameTag {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+  justify-content: center;
+  align-content: center;
 }
 
 img {
-    border-radius: 50%;
-    margin-top: 50%;
+  border-radius: 50%;
+  margin-top: 50%;
 }
 
-.BalanceTag{
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 10px;
-    justify-content: center;
-    align-content: center;
-
+.BalanceTag {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+  justify-content: center;
+  align-content: center;
 }
 
+.Chart24h {
+  width: 200px;
+  height: 80px;
+  padding: 10px;
+}

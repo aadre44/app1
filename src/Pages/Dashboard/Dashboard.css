@@ -1,51 +1,64 @@
+.DashboardContainer {
+  margin: 15px;
+  padding-left: 80px;
+  width: 100vw;
+  overflow: auto;
+}
+.DashboardContent {
+  width: 100%;
+  height: 100vh;
 
-  .DashboardContainer{
-    margin: 15px;
-    padding-left: 80px;
-  }
-  .Content {
-    width: 70vw;
-    height: 100vh;
-    
-    overflow-y: scroll;
-  }
-  
-  .ContentHeader {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-  }
-  .SidePanel {
-    width: 30vw;
-    right: 0px;
-    background-color: #1f2937;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .DashTitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 3px;
-  }
-  .DashTitle p{
-    color: gray;
-  }
-  
-  .Spacer {
-    margin-left: 120px;
-  }
-  
-  .TabHeader {
-    display: flex;
-  }
-  
-  p {
-    margin: 0;
-    padding-left: 1rem;
-  }
-  
+  overflow-y: scroll;
+}
+
+.ContentHeader {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.Dashboard{
+
+  width: 100%;
+
+}
+
+.DashTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
+}
+.DashTitle p {
+  color: gray;
+}
+
+.Spacer {
+  margin-left: 120px;
+}
+
+.TabHeader {
+  display: flex;
+}
+
+p {
+  margin: 0;
+  padding-left: 1rem;
+}
+button {
+  color: white;
+  border: 0px;
+  background-color: transparent;
+}
+button:hover {
+  color: gold;
+  border-color: transparent;
+}
+button:active{
+  border: 0px;
+  border-color: transparent;
+}
+button:focus{
+  border: none;
+}
+
